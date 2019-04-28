@@ -30,10 +30,10 @@ public class RSA
         d = e.modInverse(phi);*/
         d = kibovitettEukledesziAlgoritmus(phi,e);
         String testString = "a";
-        byte[] encripted = encrypt(testString.getBytes());
-        byte[] decripted = decrypt(encripted);
-        System.out.println("Osszehasonlitas: " + testString  + " " +  new String(decripted) );
-        if(testString.equals( new String(decripted))){
+        byte[] titkositott = titkosit(testString.getBytes());
+        byte[] feltort = feltor(titkositott);
+        System.out.println("Osszehasonlitas: " + testString  + " " +  new String(feltort) );
+        if(testString.equals( new String(feltort))){
             System.out.println("helyes szam");
         }
             else
@@ -68,23 +68,23 @@ public class RSA
 
             DataInputStream in = new DataInputStream(System.in);
             String teststring;
-            System.out.println("Enter the plain text:");
+            System.out.println("Írd be a szöveget:");
             teststring = in.readLine();
-            System.out.println("Encrypting String: " + teststring);
-            System.out.println("String in Bytes: "
+            System.out.println("Titkosítom a szöveget: " + teststring);
+            System.out.println("A szöveg bájtokban: "
                     + bytesToString(teststring.getBytes()));
-            // encrypt
-            byte[] encrypted = rsa.encrypt(teststring.getBytes());
-            // decrypt
-            byte[] decrypted = rsa.decrypt(encrypted);
-            System.out.println("Decrypting Bytes: " + bytesToString(decrypted));
-            System.out.println("Decrypted String: " + new String(decrypted));
+            // titkosit
+            byte[] titkositott = rsa.titkosit(teststring.getBytes());
+            // feltor
+            byte[] feltort = rsa.feltor(titkositott);
+            System.out.println("Feltöröm ezeket a bájtokat: " + bytesToString(feltort));
+            System.out.println("Feltört szöveg: " + new String(feltort));
         }
     }
-    private static String bytesToString(byte[] encrypted)
+    private static String bytesToString(byte[] titkositott)
     {
         String test = "";
-        for (byte b : encrypted)
+        for (byte b : titkositott)
         {
             test += Byte.toString(b);
         }
@@ -92,9 +92,9 @@ public class RSA
     }
 
     // Encrypt message
-    public byte[] encrypt(byte[] message)
+    public byte[] titkosit(byte[] message)
     {
-        System.out.println("ENCRIPT");
+        System.out.println("Titkosít");
         System.out.println("---------------------------------------------------------------------");
         //System.out.println("alap: " +(new BigInteger(message))+"\nkitevo: "+ e+"\nmodulus: "+N);
        // return (new BigInteger(message)).modPow(e, N).toByteArray();
@@ -102,10 +102,10 @@ public class RSA
 
     }
 
-    // Decrypt message
-    public byte[] decrypt(byte[] message)
+    // Feltori az uzenetet
+    public byte[] feltor(byte[] message)
     {
-        System.out.println("DECRIPT");
+        System.out.println("Feltör");
         System.out.println("---------------------------------------------------------------------");
         //System.out.println("alap: " +(new BigInteger(message))+"\nkitevo: "+ d+"\nmodulus: "+N);
         //return (new BigInteger(message)).modPow(d, N).toByteArray();
