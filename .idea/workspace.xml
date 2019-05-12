@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0562a1e-fbe1-44fd-9ede-23e69bb25c55" name="Default Changelist" comment="Gyorshatvanyozo algoritmus.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b0562a1e-fbe1-44fd-9ede-23e69bb25c55" name="Default Changelist" comment="Tokeletesen mukodik">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RSA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RSAKodolas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UjRSA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RSAKodolas.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,11 +30,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/RSA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="219" column="49" lean-forward="true" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
+            <state relative-caret-position="326">
+              <caret line="28" column="78" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2658#2816#0" />
               </folding>
             </state>
           </provider>
@@ -63,6 +55,8 @@
       <find>encrypted</find>
       <find>decripted</find>
       <find>System.out.</find>
+      <find>modPow</find>
+      <find>gyorsHa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -84,8 +78,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-299" />
-    <option name="y" value="136" />
+    <option name="x" value="-300" />
+    <option name="y" value="135" />
     <option name="width" value="1190" />
     <option name="height" value="825" />
   </component>
@@ -95,9 +89,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="RSAKodolas" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="RSAKodolas" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -178,14 +182,21 @@
       <option name="project" value="LOCAL" />
       <updated>1555515491371</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Sajat primteszt van benne. Miller-Rabin amit a Fermat teszt ellenoriz.">
+      <created>1557588929080</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1557588929080</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19395973" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19664429" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -195,7 +206,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.056657225" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15155807" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -257,7 +268,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gyorshatvanyozo algoritmus." />
-    <option name="LAST_COMMIT_MESSAGE" value="Gyorshatvanyozo algoritmus." />
+    <MESSAGE value="Sajat primteszt van benne. Miller-Rabin amit a Fermat teszt ellenoriz." />
+    <option name="LAST_COMMIT_MESSAGE" value="Sajat primteszt van benne. Miller-Rabin amit a Fermat teszt ellenoriz." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/RSACoding.java" />
@@ -276,11 +288,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/RSA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="219" column="49" lean-forward="true" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
+        <state relative-caret-position="326">
+          <caret line="28" column="78" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2658#2816#0" />
           </folding>
         </state>
       </provider>

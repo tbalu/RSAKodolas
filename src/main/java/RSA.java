@@ -14,13 +14,12 @@ public class RSA
     private int        bitlength = 1024;
     private Random     r;
 
-    public  RSA (int i){}
+
     public RSA()
     {
         System.out.println("Új RSA inicializálása:");
         r = new Random();
-        /*p = BigInteger.probablePrime(bitlength, r);
-        q = BigInteger.probablePrime(bitlength, r);*/
+
         p = this.veletlenPrimetGeneral();
         System.out.println("p: " + p);
 
@@ -28,7 +27,6 @@ public class RSA
         System.out.println("q: " + q);
         N = p.multiply(q);
         phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
-        //e = BigInteger.probablePrime(bitlength / 2, r);
         e = this.veletlenPrimetGeneral();
         System.out.println("e: "+ e);
         System.out.println("e: "+e);
@@ -57,29 +55,7 @@ public class RSA
 
 
     public static void main(String[] args) throws IOException {
-        /*BigInteger b = new BigInteger("9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999");
-        System.out.println(b.intValue());
-        System.out.println(b.mod(new BigInteger("2")));
 
-        RSA rsa = new RSA(12);
-        System.out.println("Miller : " + rsa.MillerRabinTeszt(new BigInteger("703")) + "fermat: " + rsa.Fermatteszt(new BigInteger("703")));
-        BigInteger bigIntegeri = new BigInteger("2");
-        for(int i = 0 ; i < 1001; i++){
-
-        bigIntegeri = bigIntegeri.add(BigInteger.ONE);
-        ;
-        if(bigIntegeri.mod(new BigInteger("2")).equals(BigInteger.ONE) && rsa.MillerRabinTeszt(bigIntegeri))
-            System.out.println(bigIntegeri + " prim? " );
-        //System.out.println( + " prim? ");
-
-        }
-        for(int i = 0; i < 10; i++){
-            System.out.println(rsa.veletlenPrimetGeneral());
-        }*/
-        /*
-        RSA rsa = new RSA(2);
-        System.out.println(rsa.Fermatteszt(new BigInteger("70")));
-        System.out.println(rsa.veletlenPrimetGeneral());*/
        while (true) {
             RSA rsa = new RSA();
 
@@ -122,7 +98,7 @@ public class RSA
     {
 
         System.out.println("alap: " +(new BigInteger(message))+"\nkitevo: "+ e+"\nmodulus: "+N);
-        return gyorsHatvanyokzas((new BigInteger(message)),e,N).toByteArray();
+        return gyorsHatvanyozas((new BigInteger(message)),e,N).toByteArray();
 
     }
 
@@ -130,7 +106,7 @@ public class RSA
     public byte[] feltor(byte[] message)
     {
 
-        return gyorsHatvanyokzas((new BigInteger(message)),d,N).toByteArray();
+        return gyorsHatvanyozas((new BigInteger(message)),d,N).toByteArray();
     }
 
     public BigInteger kibovitettEukledesziAlgoritmus(BigInteger rk, BigInteger rkp1) {
@@ -156,8 +132,7 @@ public class RSA
         szamlalo++;
         if (ru.equals(new BigInteger("1")) == true) {
             int kitevo = (int) Math.pow(-1, szamlalo);
-            BigInteger[] eredmeny = {qu, xu.multiply(new BigInteger(String.valueOf(kitevo))),
-                    yu.multiply(new BigInteger(String.valueOf(kitevo * -1)))};
+
 
             if(yu.compareTo(BigInteger.ZERO)==1){
                 return yu;
@@ -167,7 +142,7 @@ public class RSA
 
     }
 
-    public BigInteger gyorsHatvanyokzas(BigInteger alap, BigInteger kitevo, BigInteger mod) {
+    public BigInteger gyorsHatvanyozas(BigInteger alap, BigInteger kitevo, BigInteger mod) {
         String binarisRep = kitevo.toString(2);
         BigInteger hatvModolus = alap;
         BigInteger modulus = BigInteger.ONE;
@@ -210,14 +185,14 @@ public class RSA
     private boolean Fermatteszt(BigInteger p){
         BigInteger alap = new BigInteger(p.bitCount(),new Random());
         alap = alap.subtract(BigInteger.ONE);
-       //System.out.println(alap);
-        if(alap.modPow(p.subtract(BigInteger.ONE) , p).compareTo(BigInteger.ONE)==0 ){
+
+        if(this.gyorsHatvanyozas(alap,p.subtract(BigInteger.ONE),p).compareTo(BigInteger.ONE) ==0){
             return true;
         }
         return false;
     }
     public boolean MillerRabinTeszt(BigInteger primJelolt){
-        //BigInteger alap = new BigInteger("11");
+
         BigInteger alap = new BigInteger(primJelolt.bitCount(),new Random());
         alap = alap.subtract(BigInteger.ONE);
         BigInteger pm1 = primJelolt.subtract(BigInteger.ONE);
@@ -226,22 +201,14 @@ public class RSA
         while(pm1.divide(ketto).mod(ketto)==BigInteger.ZERO){
             pm1 = pm1.divide(ketto);
                 s =  s.add(BigInteger.ONE);
-               // System.out.println(s);
+
 
         }
-        //System.out.println("s ertek: " + s);
+
 
         for (; s.compareTo(BigInteger.ZERO)!=-1; s =  s.subtract(BigInteger.ONE)){
-                /*System.out.println("forban vagyok");
-                System.out.println(s);
-                System.out.println(ketto.pow(s.intValue()));
-                System.out.println("alap : " + alap);
-                System.out.println("kitevo:" + ketto.pow(s.intValue()).multiply(pm1));
-                System.out.println("primjelolt: "  + primJelolt);
-                System.out.println(alap.modPow(ketto.pow(s.intValue()).multiply(pm1),primJelolt));*/
-            //System.out.println(alap.modPow(ketto.pow(s.intValue()).multiply(pm1),primJelolt));
-                if(alap.modPow(ketto.pow(s.intValue()).multiply(pm1),primJelolt).compareTo(BigInteger.ONE)==0){
-               // System.out.println("Prim");
+
+            if(gyorsHatvanyozas(alap,ketto.pow(s.intValue()).multiply(pm1),primJelolt).compareTo(BigInteger.ONE)==0){
                 return true;
             }
         }
